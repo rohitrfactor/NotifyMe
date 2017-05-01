@@ -10,6 +10,8 @@ import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
@@ -46,6 +48,21 @@ public class MainActivity extends AppCompatActivity {
         mUpdateButton.setEnabled(false);
         mCancelButton.setEnabled(false);
 
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem menuItem){
+        int id = menuItem.getItemId();
+        if(id == R.id.action_settings){
+            Intent intent = new Intent(this,SettingsActivity.class);
+            startActivity(intent);
+        }
+        return super.onOptionsItemSelected(menuItem);
     }
     public void sendNotification(){
         Intent	notificationIntent	=	new Intent(this,	MainActivity.class);
